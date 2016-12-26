@@ -1,6 +1,5 @@
 package com.example.huangcl.manychannel;
 
-import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.support.v7.app.AppCompatActivity;

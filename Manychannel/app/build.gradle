@@ -10,7 +10,7 @@ android {
         applicationId "com.example.huangcl.manychannel"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode Integer.valueOf(VERSIONCODE)
+        versionCode Integer.valueOf(VERSIONCODE)//gradle.properties文件中
         versionName VERSIONNAME
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -18,17 +18,19 @@ android {
     //声明签名信息
     signingConfigs {
         release {
-            keyAlias KEYALIAS
-            keyPassword KEYPASSWORD
-            storeFile file(STOREFILE)
-            storePassword STOREPASSWORD
+            keyAlias KEYALIAS//gradle.properties文件中
+            keyPassword KEYPASSWORD//gradle.properties文件中
+            storeFile file(STOREFILE)//gradle.properties文件中
+            storePassword STOREPASSWORD//gradle.properties文件中
         }
     }
+
 
     buildTypes {
         //发行版
         release {
             minifyEnabled true
+            //gradle.properties文件中
             proguardFiles getDefaultProguardFile(PROGUARD_ANDROID), PROGUARD_RULES
             //签名信息
             signingConfig signingConfigs.release
@@ -40,7 +42,6 @@ android {
             //签名信息
             signingConfig signingConfigs.release
         }
-
 
     }
 
