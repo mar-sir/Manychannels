@@ -344,15 +344,26 @@
             STOREPASSWORD=hs19931010
 #### 结果
 * 同一手机
+
 ![](https://github.com/mar-sir/Manychannels/blob/master/Manychannel/app/src/main/java/images/result_1.png?raw=true)
+
 * 不同显示
-测试版
-![](https://github.com/mar-sir/Manychannels/blob/master/Manychannel/app/src/main/java/images/result_2.jpg.png?raw=true)
-fir版
-![](https://github.com/mar-sir/Manychannels/blob/master/Manychannel/app/src/main/java/images/result_3.jpg.png?raw=true)
-豌豆荚版
-![](https://github.com/mar-sir/Manychannels/blob/master/Manychannel/app/src/main/java/images/result_4.jpg.png?raw=true)
-360版
-![](https://github.com/mar-sir/Manychannels/blob/master/Manychannel/app/src/main/java/images/result_5.jpg.png?raw=true)
+
+    测试版
+    
+    ![](https://github.com/mar-sir/Manychannels/blob/master/Manychannel/app/src/main/java/images/result_2.jpg?raw=true)
+    
+    fir版
+    
+    ![](https://github.com/mar-sir/Manychannels/blob/master/Manychannel/app/src/main/java/images/result_3.jpg?raw=true)
+    
+    
+    豌豆荚版
+    
+    ![](https://github.com/mar-sir/Manychannels/blob/master/Manychannel/app/src/main/java/images/result_4.jpg?raw=true)
+    
+    360版
+    
+    ![](https://github.com/mar-sir/Manychannels/blob/master/Manychannel/app/src/main/java/images/result_5.jpg?raw=true)
 
 [源码地址](https://github.com/mar-sir/Manychannels.git)
