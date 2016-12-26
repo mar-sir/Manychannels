@@ -1,0 +1,116 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+
+
+    defaultConfig {
+        applicationId "com.example.huangcl.manychannel"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode Integer.valueOf(VERSIONCODE)
+        versionName VERSIONNAME
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    //声明签名信息
+    signingConfigs {
+        release {
+            keyAlias KEYALIAS
+            keyPassword KEYPASSWORD
+            storeFile file(STOREFILE)
+            storePassword STOREPASSWORD
+        }
+    }
+
+    buildTypes {
+        //发行版
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile(PROGUARD_ANDROID), PROGUARD_RULES
+            //签名信息
+            signingConfig signingConfigs.release
+        }
+        //debug版
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile(PROGUARD_ANDROID), PROGUARD_RULES
+            //签名信息
+            signingConfig signingConfigs.release
+        }
+
+
+    }
+
+    //渠道分析
+    productFlavors {
+
+        //开发阶段
+        manychannel_debug {
+            manifestPlaceholders = [CHANNEL_ID: CHANNEL_DEBUG,
+                                    app_icon  : "@mipmap/ic_launcher",
+                                    app_name  : "测试版本"]
+        }
+        //内部测试阶段
+        manychannel_firim {
+            manifestPlaceholders = [CHANNEL_ID: CHANNEL_FIRIM,
+                                    app_icon  : "@mipmap/ic_money",
+                                    app_name  : "fir版本"]
+        }
+        //豌豆夹
+        manychannel_wandoujia {
+            manifestPlaceholders = [CHANNEL_ID: CHANNEL_WANDOUJIA,
+                                    app_icon  : "@mipmap/ic_pay",
+                                    app_name  : "豌豆荚版本"]
+        }
+        //360市场
+        manychannel_sanliuling {
+            manifestPlaceholders = [CHANNEL_ID: CHANNEL_SANLIULING,
+                                    app_icon  : "@mipmap/ic_wechat",
+                                    app_name  : "360版本"]
+        }
+
+    }
+    //通用渠道映射项
+    def flavorHash = [UMENG_APPKEY: UMENG_APPKEY];
+
+    //映射渠道分析
+    productFlavors.all {
+            //
+        flavor ->
+            flavor.manifestPlaceholders.putAll(flavorHash);
+            //println flavor
+            if (flavor.name.equals("manychannel_debug")) {
+                flavor.versionCode = Integer.valueOf(VERSIONCODE_DEV);
+                flavor.versionName = VERSIONNAME_DEV;
+                flavor.applicationId = "com.example.huangcl.manychannel_debug"
+
+            } else if (flavor.name.equals("manychannel_firim")) {
+                flavor.versionCode = Integer.valueOf(VERSIONCODE);
+                flavor.versionName = VERSIONNAME;
+                flavor.applicationId = "com.example.huangcl.manychannel_fir"
+
+            } else if (flavor.name.equals("manychannel_wandoujia")) {
+                flavor.versionCode = Integer.valueOf(VERSIONCODE);
+                flavor.versionName = VERSIONNAME;
+                flavor.applicationId = "com.example.huangcl.manychannel_wandoujia"
+
+            } else if (flavor.name.equals("manychannel_sanliuling")) {
+                flavor.versionCode = Integer.valueOf(VERSIONCODE);
+                flavor.versionName = VERSIONNAME;
+                flavor.applicationId = "com.example.huangcl.manychannel_sanliuling"
+            }
+    }
+
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
+    testCompile 'junit:junit:4.12'
+}
